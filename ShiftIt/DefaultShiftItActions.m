@@ -219,11 +219,12 @@ const SimpleWindowGeometryChangeBlock shiftItFullScreen = ^AnchoredRect(NSRect w
 
 const SimpleWindowGeometryChangeBlock shiftItCenter = ^AnchoredRect(NSRect windowRect, NSSize screenSize) {
     NSRect r = NSMakeRect(0, 0, 0, 0);
+    
+    r.size.width = screenSize.width / 2;
+    r.size.height = screenSize.height;
 
-    r.origin.x = (screenSize.width / 2) - (windowRect.size.width / 2);
-    r.origin.y = (screenSize.height / 2) - (windowRect.size.height / 2);
-
-    r.size = windowRect.size;
+    r.origin.x = screenSize.width / 4;
+    r.origin.y = 0;
 
     return MakeAnchoredRect(r, 0);
 };
